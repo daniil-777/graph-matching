@@ -1,6 +1,6 @@
 # Graph Learning for Graph Based Semantic Matching
 
-This repository contains PyTorch implementation of our project. This code is based off of the implementation of [Github](https://github.com/Thinklab-SJTU/PCA-GM).
+This repository contains PyTorch implementation of the graph semantic matching as a project of the deep learning course at ETH Zuich. The report can be found [here](https://github.com/daniil-777/graph-matching/blob/master/report/DeepLearning_Report.pdf). This code is based off of the implementation of [Github](https://github.com/Thinklab-SJTU/PCA-GM).
 
 
 ## Get started
@@ -41,3 +41,12 @@ The config files are as follows:
     1. knn_1_cub.yaml - With knn connectivity with k=1 neighbour.
     1. knn_2_cub.yaml - With knn connectivity with k=2 neighbours.
     1. knn_3_cub.yaml - With knn connectivity with k=3 neighbours.
+
+## Pipeline
+Flow diagram of the different stages of the graphmatching  optimisation:
+![](media/graphmatch.png)
+## Results
+Graphs learnt by the network given images andkeypoints  on  Pascal  VOC  dataset
+![](media/GL_pascal.png)
+
+
