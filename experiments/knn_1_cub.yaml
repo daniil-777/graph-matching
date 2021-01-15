@@ -1,0 +1,64 @@
+# VGG16 model with Pascal VOC dataset
+
+MODEL_NAME: vgg16_knn_1
+DATASET_NAME: cub
+
+DATASET_FULL_NAME: Cub_Voc
+
+MODULE: GMN.model
+
+BACKBONE: VGG16_bn
+
+BATCH_SIZE: 8
+DATALOADER_NUM: 2
+
+RANDOM_SEED: 123
+STATISTIC_STEP: 50
+
+# available GPU ids
+GPUS:
+  - 0
+#  - 1
+
+# Pairwise data configuration
+PAIR:
+  RESCALE:  # rescaled image size
+    - 256
+    - 256
+  GT_GRAPH_CONSTRUCT: knn
+  REF_GRAPH_CONSTRUCT: knn
+  NUM_NEIGHBOURS: 1
+
+# Training settings
+TRAIN:
+  # start, end epochs
+  START_EPOCH: 0
+  NUM_EPOCHS: 15
+
+  LOSS_FUNC: offset
+
+  # learning rate
+  LR: 2.0e-4
+  MOMENTUM: 0.9
+  LR_DECAY: 0.1
+  LR_STEP:  # (in epochs)
+    - 1
+
+  EPOCH_ITERS: 100  # iterations per epoch
+
+  CLASS: none
+
+# Evaluation settings and PCK metric
+EVAL:
+  EPOCH: 15  # epoch to be tested
+  SAMPLES: 5000  # number of tested pairs for each class
+
+# GMN model parameters
+GMN:
+  FEATURE_CHANNEL: 512
+  PI_ITER_NUM: 25
+  PI_STOP_THRESH: 0. #2.0e-7
+  BS_ITER_NUM: 20
+  BS_EPSILON: 1.0e-10
+  VOTING_ALPHA: 200.
+  NUM_ADJACENCY: 25
